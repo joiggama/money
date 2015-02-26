@@ -10,6 +10,10 @@ var (
 	currencies map[string]map[string]interface{}
 )
 
+func get(attribute string, currency string) interface{} {
+	return currencies[currency][attribute]
+}
+
 func init() {
 	file, err := ioutil.ReadFile("./data.json")
 

@@ -23,7 +23,7 @@ func TestDefaults(t *testing.T) {
 func TestOverride(t *testing.T) {
 	options := defaults()
 
-	options = override(options, map[string]interface{}{"currency": "cad"})
+	options = override(options, Options{"currency": "cad"})
 
 	if options["currency"].(string) != "cad" {
 		t.Error("Expected currency to be overriden to cad")

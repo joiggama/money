@@ -1,14 +1,16 @@
 package money
 
-func defaults() map[string]interface{} {
-	return map[string]interface{}{
+type Options map[string]interface{}
+
+func defaults() Options {
+	return Options{
 		"currency":      "usd",
 		"no_cents":      false,
 		"with_currency": false,
 	}
 }
 
-func override(original, override map[string]interface{}) map[string]interface{} {
+func override(original, override Options) Options {
 	for k, v := range override {
 		if override[k] != nil {
 			original[k] = v

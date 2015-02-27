@@ -1,6 +1,7 @@
 package money
 
 import (
+	"fmt"
 	"math"
 	"strings"
 )
@@ -28,4 +29,13 @@ func separateThousands(value, separator string) string {
 	}
 
 	return strings.Join(r, separator)
+}
+
+func splitValue(val float64) (integer, fractional string) {
+	i, f := math.Modf(val)
+
+	integer = fmt.Sprintf("%.0f", i)
+	fractional = fmt.Sprintf("%.2f", f)[2:]
+
+	return
 }

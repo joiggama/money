@@ -85,6 +85,26 @@ func TestNewWithoutCents(t *testing.T) {
 	}
 }
 
+func TestAddSymbol(t *testing.T) {
+	q := "10.00"
+
+	if afn := addSymbol(q, currencies["afn"], defaults()); afn != "10.00؋" {
+		t.Errorf("Expected euro symbol to be placed after quantity, but got %s", afn)
+	}
+
+	if afn := addSymbol(q, currencies["afn"], Options{"with_symbol_space": true}); afn != "10.00 ؋" {
+		t.Errorf("Expected euro symbol to be placed after quantity and a space, but got %s", afn)
+	}
+
+	if usd := addSymbol(q, currencies["usd"], defaults()); usd != "$10.00" {
+		t.Errorf("Expected dollar symbol to be placed before quantity, but got %s", usd)
+	}
+
+	if usd := addSymbol(q, currencies["usd"], Options{"with_symbol_space": true}); usd != "$ 10.00" {
+		t.Errorf("Expected dollar symbol to be placed before quantity and a space, but got %s", usd)
+	}
+}
+
 func TestSeparateThousands(t *testing.T) {
 	values := map[string]string{
 		"1":         "1",

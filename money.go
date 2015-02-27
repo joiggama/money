@@ -1,3 +1,29 @@
+/*
+Package money is a library to deal with money and currency representation.
+Inspired by ruby money library http://rubymoney.github.io/money.
+
+Defaults
+
+    Options{
+      "currency":                 "usd",
+      "with_cents":               true,
+      "with_currency":            false,
+      "with_symbol":              true,
+      "with_symbol_space":        false,
+      "with_thousands_separator": true,
+    }
+
+Usage
+
+    money.New(10)                                               # "$10.00"
+    money.New(10, Options{"currency": "eur"})                   # "€10.00"
+    money.New(10, Options{"with_cents": false})                 # "$10"
+    money.New(10, Options{"with_currency:" true })              # "$10.00 USD"
+    money.New(10, Options{"with_symbol": false})                # "10.00"
+    money.New(10, Options{"with_symbol_space":true})            # "$ 10.00"
+    money.New(1000)                                             # "$1,000.00"
+    money.New(1000, Options{"with_thousands_separator": false}) # "$1000.00"
+*/
 package money
 
 import (
@@ -7,28 +33,6 @@ import (
 )
 
 // New returns a formatted price string according to currency rules and options
-//
-// Options defaults
-//
-// Options{
-//		"currency":                 "usd",
-//		"with_cents":               true,
-//	  "with_currency":            false,
-//		"with_symbol":              true,
-//		"with_symbol_space":        false,
-//		"with_thousands_separator": true,
-//	}
-//
-// Examples
-//
-// money.New(10)                                               # "$10.00"
-// money.New(10, Options{"currency": "eur"})                   # "€10.00"
-// money.New(10, Options{"with_cents": false})                 # "$10"
-// money.New(10, Options{"with_currency:" true })              # "$10.00 USD"
-// money.New(10, Options{"with_symbol": false})                # "10.00"
-// money.New(10, Options{"with_symbol_space":true})            # "$ 10.00"
-// money.New(1000)                                             # "$1,000.00"
-// money.New(1000, Options{"with_thousands_separator": false}) # "$1000.00"
 func New(val float64, opts ...Options) (result string) {
 	options := defaults()
 

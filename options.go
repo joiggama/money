@@ -1,5 +1,6 @@
 package money
 
+// Options is convenience shorthand for a map[string]interface{}
 type Options map[string]interface{}
 
 func defaults() Options {

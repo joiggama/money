@@ -2,46 +2,9 @@ package money
 
 import (
 	"fmt"
+	"math"
+	"strings"
 )
-
-type Options map[string]interface{}
-
-func addSymbol(result string, currency map[string]interface{}, options Options) string {
-	var space string
-
-	if options["with_symbol_space"].(bool) {
-		space = " "
-	}
-
-	if currency["symbol_first"].(bool) {
-		result = fmt.Sprintf("%s%s%s", currency["symbol"], space, result)
-	} else {
-		result = fmt.Sprintf("%s%s%s", result, space, currency["symbol"], space)
-	}
-
-	return result
-}
-
-func defaults() Options {
-	return Options{
-		"currency":                 "usd",
-		"with_cents":               true,
-		"with_currency":            false,
-		"with_symbol":              true,
-		"with_symbol_space":        false,
-		"with_thousands_separator": true,
-	}
-}
-
-func override(original, override Options) Options {
-	for k, v := range override {
-		if override[k] != nil {
-			original[k] = v
-		}
-	}
-
-	return original
-}
 
 func New(val float64, opts ...Options) (result string) {
 	options := defaults()
@@ -73,4 +36,54 @@ func New(val float64, opts ...Options) (result string) {
 	}
 
 	return result
+}
+
+func addSymbol(result string, currency map[string]interface{}, options Options) string {
+	var space string
+
+	if options["with_symbol_space"].(bool) {
+		space = " "
+	}
+
+	if currency["symbol_first"].(bool) {
+		result = fmt.Sprintf("%s%s%s", currency["symbol"], space, result)
+	} else {
+		result = fmt.Sprintf("%s%s%s", result, space, currency["symbol"])
+	}
+
+	return result
+}
+
+func separateThousands(value, separator string) string {
+	s := len(value) / 3
+	m := int(math.Mod(float64(len(value)), 3))
+
+	if m > 0 {
+		s++
+	}
+
+	if s == 0 {
+		return value
+	}
+
+	r := make([]string, s)
+
+	for i := 0; i < len(r); i++ {
+		if i == 0 && m > 0 {
+			r[i] = value[i : i+m]
+		} else {
+			r[i] = value[i : i+3]
+		}
+	}
+
+	return strings.Join(r, separator)
+}
+
+func splitValue(val float64) (integer, fractional string) {
+	i, f := math.Modf(val)
+
+	integer = fmt.Sprintf("%.0f", i)
+	fractional = fmt.Sprintf("%.2f", f)[2:]
+
+	return
 }

@@ -4,23 +4,7 @@ import (
 	"testing"
 )
 
-func TestDefaults(t *testing.T) {
-	defaults := defaults()
-
-	if defaults["currency"].(string) != "usd" {
-		t.Error("Expected default currency to be usd")
-	}
-
-	if defaults["with_cents"].(bool) != true {
-		t.Error("Expected default with_cents to be true")
-	}
-
-	if defaults["with_currency"].(bool) != false {
-		t.Error("Expected default with_currency to be false")
-	}
-}
-
-func TestNewDefaults(t *testing.T) {
+func TestNewWithDefaults(t *testing.T) {
 	currency := New(10)
 	expected := "$10.00"
 
@@ -101,16 +85,22 @@ func TestNewWithoutCents(t *testing.T) {
 	}
 }
 
-func TestOverride(t *testing.T) {
-	options := defaults()
-
-	options = override(options, Options{"currency": "cad"})
-
-	if options["currency"].(string) != "cad" {
-		t.Error("Expected currency to be overriden to cad")
+func TestSeparateThousands(t *testing.T) {
+	values := map[string]string{
+		"1":         "1",
+		"10":        "10",
+		"100":       "100",
+		"1000":      "1,000",
+		"10000":     "10,000",
+		"100000":    "100,000",
+		"1000000":   "1,000,000",
+		"10000000":  "10,000,000",
+		"100000000": "100,000,000",
 	}
 
-	if options["with_currency"].(bool) != false {
-		t.Error("Expected with_currency not to be overriden")
+	for value, expected := range values {
+		if v := separateThousands(value, ","); v != expected {
+			t.Error("Expected %s to be %s", v, expected)
+		}
 	}
 }

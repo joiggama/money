@@ -120,7 +120,7 @@ func TestSeparateThousands(t *testing.T) {
 
 	for value, expected := range values {
 		if v := separateThousands(value, ","); v != expected {
-			t.Error("Expected %s to be %s", v, expected)
+			t.Errorf("Expected %s to be %s", v, expected)
 		}
 	}
 }

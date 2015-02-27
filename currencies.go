@@ -14,12 +14,12 @@ func init() {
 	file, err := ioutil.ReadFile("./currencies.json")
 
 	if err != nil {
-		log.Println("[money] %s", err)
+		log.Fatalf("[money] %s\n", err)
 	}
 
 	err = json.Unmarshal(file, &currencies)
 
 	if err != nil {
-		log.Println("[money] %s", err)
+		log.Fatalf("[money] %s\n", err)
 	}
 }

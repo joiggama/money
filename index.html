@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Money : A golang library to deal with money and currency representation.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Money</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/joiggama/money">View on GitHub</a>
+
+          <h1 id="project_title">Money</h1>
+          <h2 id="project_tagline">A golang library to deal with money and currency representation.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/joiggama/money/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/joiggama/money/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="money" class="anchor" href="#money" aria-hidden="true"><span class="octicon octicon-link"></span></a>Money</h1>
+
+<p><a href="https://travis-ci.org/joiggama/money"><img src="https://travis-ci.org/joiggama/money.svg" alt="travis"></a>
+<a href="https://godoc.org/github.com/joiggama/money"><img src="https://godoc.org/github.com/joiggama/money?status.svg" alt="GoDoc"></a></p>
+
+<p>A golang library to deal with money and currency representation.
+Inspired by <a href="http://rubymoney.github.io/money">ruby money library</a>.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>$ go get github.com/joiggama/money
+</code></pre>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>First, import the package adding:</p>
+
+<div class="highlight highlight-go"><pre><span class="pl-k">import</span> <span class="pl-s1"><span class="pl-pds">"</span>github.com/joiggama/money<span class="pl-pds">"</span></span></pre></div>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-go"><pre>money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>)                                               <span class="pl-c">// "$10.00"</span>
+money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>currency<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>eur<span class="pl-pds">"</span></span>})                   <span class="pl-c">// "€10.00"</span>
+money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>with_cents<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>})                 <span class="pl-c">// "$10"</span>
+money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>with_currency:<span class="pl-pds">"</span></span> <span class="pl-c1">true</span> })              <span class="pl-c">// "$10.00 USD"</span>
+money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>with_symbol<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>})                <span class="pl-c">// "10.00"</span>
+money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>with_symbol_space<span class="pl-pds">"</span></span>:<span class="pl-c1">true</span>})            <span class="pl-c">// "$ 10.00"</span>
+money.<span class="pl-s3">New</span>(<span class="pl-c1">1000</span>)                                             <span class="pl-c">// "$1,000.00"</span>
+money.<span class="pl-s3">New</span>(<span class="pl-c1">1000</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>with_thousands_separator<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>}) <span class="pl-c">// "$1000.00"</span></pre></div>
+
+<p>For more detailed documentation refer to <a href="http://godoc.org/github.com/joiggama/money">godoc</a></p>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Fork it ( <a href="https://github.com/joiggama/money/fork">https://github.com/joiggama/money/fork</a> )</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="LICENSE.md">The MIT licence</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Money maintained by <a href="https://github.com/joiggama">joiggama</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-60212400-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>

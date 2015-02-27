@@ -15,14 +15,14 @@ Defaults
 
 Usage
 
-    money.New(10)                                               # "$10.00"
-    money.New(10, Options{"currency": "eur"})                   # "€10.00"
-    money.New(10, Options{"with_cents": false})                 # "$10"
-    money.New(10, Options{"with_currency:" true })              # "$10.00 USD"
-    money.New(10, Options{"with_symbol": false})                # "10.00"
-    money.New(10, Options{"with_symbol_space":true})            # "$ 10.00"
-    money.New(1000)                                             # "$1,000.00"
-    money.New(1000, Options{"with_thousands_separator": false}) # "$1000.00"
+    New(10)                                               // "$10.00"
+    New(10, Options{"currency": "eur"})                   // "€10.00"
+    New(10, Options{"with_cents": false})                 // "$10"
+    New(10, Options{"with_currency:" true })              // "$10.00 USD"
+    New(10, Options{"with_symbol": false})                // "10.00"
+    New(10, Options{"with_symbol_space":true})            // "$ 10.00"
+    New(1000)                                             // "$1,000.00"
+    New(1000, Options{"with_thousands_separator": false}) // "$1000.00"
 */
 package money
 

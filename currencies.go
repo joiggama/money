@@ -4,14 +4,16 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"log"
+	"os"
 )
 
 var (
-	currencies map[string]map[string]interface{}
+	currencies     map[string]map[string]interface{}
+	currenciesFile = os.Getenv("GOPATH") + "/src/github.com/joiggama/money/currencies.json"
 )
 
 func init() {
-	file, err := ioutil.ReadFile("./currencies.json")
+	file, err := ioutil.ReadFile(currenciesFile)
 
 	if err != nil {
 		log.Fatalf("[money] %s\n", err)

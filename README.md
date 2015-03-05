@@ -22,7 +22,7 @@ Examples:
 
 ```go
 money.New(10)                                                     // "$10.00"
-money.New(10, money.Options{"currency": "eur"})                   // "€10.00"
+money.New(10, money.Options{"currency": "EUR"})                   // "€10.00"
 money.New(10, money.Options{"with_cents": false})                 // "$10"
 money.New(10, money.Options{"with_currency:" true })              // "$10.00 USD"
 money.New(10, money.Options{"with_symbol": false})                // "10.00"

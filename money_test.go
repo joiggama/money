@@ -23,7 +23,7 @@ func TestNewWithCurrency(t *testing.T) {
 }
 
 func TestNewWithCurrencyWhenCanadian(t *testing.T) {
-	currency := New(10, Options{"currency": "cad", "with_currency": true})
+	currency := New(10, Options{"currency": "CAD", "with_currency": true})
 	expected := "$10.00 CAD"
 
 	if currency != expected {
@@ -32,7 +32,7 @@ func TestNewWithCurrencyWhenCanadian(t *testing.T) {
 }
 
 func TestNewWhenJapanese(t *testing.T) {
-	currency := New(10, Options{"currency": "jpy"})
+	currency := New(10, Options{"currency": "JPY"})
 	expected := "¥10"
 
 	if currency != expected {
@@ -41,7 +41,7 @@ func TestNewWhenJapanese(t *testing.T) {
 }
 
 func TestNewWhenJapaneseOverThousand(t *testing.T) {
-	currency := New(1000, Options{"currency": "jpy"})
+	currency := New(1000, Options{"currency": "JPY"})
 	expected := "¥1,000"
 
 	if currency != expected {
@@ -50,7 +50,7 @@ func TestNewWhenJapaneseOverThousand(t *testing.T) {
 }
 
 func TestNewWhenJapaneseOverTenThousand(t *testing.T) {
-	currency := New(10000, Options{"currency": "jpy"})
+	currency := New(10000, Options{"currency": "JPY"})
 	expected := "¥10,000"
 
 	if currency != expected {
@@ -59,7 +59,7 @@ func TestNewWhenJapaneseOverTenThousand(t *testing.T) {
 }
 
 func TestNewWhenJapaneseOverHundredThousand(t *testing.T) {
-	currency := New(100000, Options{"currency": "jpy"})
+	currency := New(100000, Options{"currency": "JPY"})
 	expected := "¥100,000"
 
 	if currency != expected {
@@ -68,7 +68,7 @@ func TestNewWhenJapaneseOverHundredThousand(t *testing.T) {
 }
 
 func TestNewWhenJapaneseOverMillion(t *testing.T) {
-	currency := New(1000000, Options{"currency": "jpy"})
+	currency := New(1000000, Options{"currency": "JPY"})
 	expected := "¥1,000,000"
 
 	if currency != expected {
@@ -88,19 +88,19 @@ func TestNewWithoutCents(t *testing.T) {
 func TestAddSymbol(t *testing.T) {
 	q := "10.00"
 
-	if afn := addSymbol(q, currencies["afn"], defaults()); afn != "10.00؋" {
+	if afn := addSymbol(q, currencies["AFN"], defaults()); afn != "10.00؋" {
 		t.Errorf("Expected euro symbol to be placed after quantity, but got %s", afn)
 	}
 
-	if afn := addSymbol(q, currencies["afn"], Options{"with_symbol_space": true}); afn != "10.00 ؋" {
+	if afn := addSymbol(q, currencies["AFN"], Options{"with_symbol_space": true}); afn != "10.00 ؋" {
 		t.Errorf("Expected euro symbol to be placed after quantity and a space, but got %s", afn)
 	}
 
-	if usd := addSymbol(q, currencies["usd"], defaults()); usd != "$10.00" {
+	if usd := addSymbol(q, currencies["USD"], defaults()); usd != "$10.00" {
 		t.Errorf("Expected dollar symbol to be placed before quantity, but got %s", usd)
 	}
 
-	if usd := addSymbol(q, currencies["usd"], Options{"with_symbol_space": true}); usd != "$ 10.00" {
+	if usd := addSymbol(q, currencies["USD"], Options{"with_symbol_space": true}); usd != "$ 10.00" {
 		t.Errorf("Expected dollar symbol to be placed before quantity and a space, but got %s", usd)
 	}
 }

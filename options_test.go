@@ -7,8 +7,8 @@ import (
 func TestDefaults(t *testing.T) {
 	defaults := defaults()
 
-	if defaults["currency"].(string) != "usd" {
-		t.Error("Expected default currency to be usd")
+	if defaults["currency"].(string) != "USD" {
+		t.Error("Expected default currency to be USD")
 	}
 
 	if defaults["with_cents"].(bool) != true {
@@ -23,10 +23,10 @@ func TestDefaults(t *testing.T) {
 func TestOverride(t *testing.T) {
 	options := defaults()
 
-	options = override(options, Options{"currency": "cad"})
+	options = override(options, Options{"currency": "CAD"})
 
-	if options["currency"].(string) != "cad" {
-		t.Error("Expected currency to be overriden to cad")
+	if options["currency"].(string) != "CAD" {
+		t.Error("Expected currency to be overriden to CAD")
 	}
 
 	if options["with_currency"].(bool) != false {

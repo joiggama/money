@@ -5,7 +5,7 @@ Inspired by ruby money library http://rubymoney.github.io/money.
 Defaults
 
     Options{
-      "currency":                 "usd",
+      "currency":                 "USD",
       "with_cents":               true,
       "with_currency":            false,
       "with_symbol":              true,
@@ -16,7 +16,7 @@ Defaults
 Usage
 
     New(10)                                               // "$10.00"
-    New(10, Options{"currency": "eur"})                   // "€10.00"
+    New(10, Options{"currency": "EUR"})                   // "€10.00"
     New(10, Options{"with_cents": false})                 // "$10"
     New(10, Options{"with_currency:" true })              // "$10.00 USD"
     New(10, Options{"with_symbol": false})                // "10.00"

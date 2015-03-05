@@ -5,7 +5,7 @@ type Options map[string]interface{}
 
 func defaults() Options {
 	return Options{
-		"currency":                 "usd",
+		"currency":                 "USD",
 		"with_cents":               true,
 		"with_currency":            false,
 		"with_symbol":              true,

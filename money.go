@@ -40,42 +40,42 @@ func New(val float64, opts ...Options) (result string) {
 		options = override(options, opts[0])
 	}
 
-	currency := currencies[options["currency"].(string)]
+	c := currencies[options["currency"].(string)]
 
 	integer, fractional := splitValue(val)
 
 	if options["with_thousands_separator"].(bool) {
-		result = separateThousands(integer, currency["thousands_separator"].(string))
+		result = separateThousands(integer, c.ThousandsSeparator)
 	} else {
 		result = integer
 	}
 
-	if options["with_cents"].(bool) && currency["subunit"] != nil {
-		result = fmt.Sprintf("%s%s%s", result, currency["decimal_mark"].(string), fractional)
+	if options["with_cents"].(bool) && c.SubUnit != "" {
+		result = fmt.Sprintf("%s%s%s", result, c.DecimalMark, fractional)
 	}
 
 	if options["with_symbol"].(bool) {
-		result = addSymbol(result, currency, options)
+		result = addSymbol(result, c, options)
 	}
 
 	if options["with_currency"].(bool) {
-		result = fmt.Sprintf("%s %s", result, currency["iso_code"])
+		result = fmt.Sprintf("%s %s", result, options["currency"].(string))
 	}
 
 	return result
 }
 
-func addSymbol(result string, currency map[string]interface{}, options Options) string {
+func addSymbol(result string, c currency, options Options) string {
 	var space string
 
 	if options["with_symbol_space"].(bool) {
 		space = " "
 	}
 
-	if currency["symbol_first"].(bool) {
-		result = fmt.Sprintf("%s%s%s", currency["symbol"], space, result)
+	if c.SymbolFirst {
+		result = fmt.Sprintf("%s%s%s", c.Symbol, space, result)
 	} else {
-		result = fmt.Sprintf("%s%s%s", result, space, currency["symbol"])
+		result = fmt.Sprintf("%s%s%s", result, space, c.Symbol)
 	}
 
 	return result

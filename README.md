@@ -1,7 +1,8 @@
 # Money
 
 [![travis](https://travis-ci.org/joiggama/money.svg)](https://travis-ci.org/joiggama/money)
-[![GoDoc](https://godoc.org/github.com/joiggama/money?status.svg)](https://godoc.org/github.com/joiggama/money)
+[![godoc](https://godoc.org/github.com/joiggama/money?status.svg)](https://godoc.org/github.com/joiggama/money)
+[![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/joiggama/money?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 A golang library to deal with money and currency representation.
 Inspired by [ruby money library](http://rubymoney.github.io/money).

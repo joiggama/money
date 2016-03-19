@@ -82,28 +82,30 @@ func addSymbol(result string, c currency, options Options) string {
 }
 
 func separateThousands(value, separator string) string {
-	s := len(value) / 3
-	m := int(math.Mod(float64(len(value)), 3))
+	chunks := len(value) / 3
 
-	if m > 0 {
-		s++
-	}
-
-	if s == 0 {
+	if chunks == 0 {
 		return value
 	}
 
-	r := make([]string, s)
-
-	for i := 0; i < len(r); i++ {
-		if i == 0 && m > 0 {
-			r[i] = value[i : i+m]
-		} else {
-			r[i] = value[i : i+3]
-		}
+	if partial := math.Mod(float64(len(value)), 3); partial > 0 {
+		chunks++
 	}
 
-	return strings.Join(r, separator)
+	result := make([]string, chunks)
+
+	for i := chunks - 1; i >= 0; i-- {
+		if i == 0 {
+			result[i] = value
+			break
+		}
+
+		chunk := value[len(value)-3:]
+		value = strings.TrimSuffix(value, chunk)
+		result[i] = chunk
+	}
+
+	return strings.Join(result, separator)
 }
 
 func splitValue(val float64) (integer, fractional string) {

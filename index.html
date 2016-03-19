@@ -32,45 +32,45 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a id="money" class="anchor" href="#money" aria-hidden="true"><span class="octicon octicon-link"></span></a>Money</h1>
+<a id="money" class="anchor" href="#money" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Money</h1>
 
 <p><a href="https://travis-ci.org/joiggama/money"><img src="https://travis-ci.org/joiggama/money.svg" alt="travis"></a>
-<a href="https://godoc.org/github.com/joiggama/money"><img src="https://godoc.org/github.com/joiggama/money?status.svg" alt="GoDoc"></a></p>
+<a href="https://godoc.org/github.com/joiggama/money"><img src="https://godoc.org/github.com/joiggama/money?status.svg" alt="godoc"></a></p>
 
 <p>A golang library to deal with money and currency representation.
 Inspired by <a href="http://rubymoney.github.io/money">ruby money library</a>.</p>
 
 <h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <pre><code>$ go get github.com/joiggama/money
 </code></pre>
 
 <h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>First, import the package adding:</p>
 
-<div class="highlight highlight-go"><pre><span class="pl-k">import</span> <span class="pl-s1"><span class="pl-pds">"</span>github.com/joiggama/money<span class="pl-pds">"</span></span></pre></div>
+<div class="highlight highlight-source-go"><pre><span class="pl-k">import</span> <span class="pl-s"><span class="pl-pds">"</span>github.com/joiggama/money<span class="pl-pds">"</span></span></pre></div>
 
 <p>Examples:</p>
 
-<div class="highlight highlight-go"><pre>money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>)                                               <span class="pl-c">// "$10.00"</span>
-money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>currency<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>eur<span class="pl-pds">"</span></span>})                   <span class="pl-c">// "€10.00"</span>
-money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>with_cents<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>})                 <span class="pl-c">// "$10"</span>
-money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>with_currency:<span class="pl-pds">"</span></span> <span class="pl-c1">true</span> })              <span class="pl-c">// "$10.00 USD"</span>
-money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>with_symbol<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>})                <span class="pl-c">// "10.00"</span>
-money.<span class="pl-s3">New</span>(<span class="pl-c1">10</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>with_symbol_space<span class="pl-pds">"</span></span>:<span class="pl-c1">true</span>})            <span class="pl-c">// "$ 10.00"</span>
-money.<span class="pl-s3">New</span>(<span class="pl-c1">1000</span>)                                             <span class="pl-c">// "$1,000.00"</span>
-money.<span class="pl-s3">New</span>(<span class="pl-c1">1000</span>, <span class="pl-v">Options</span>{<span class="pl-s1"><span class="pl-pds">"</span>with_thousands_separator<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>}) <span class="pl-c">// "$1000.00"</span></pre></div>
+<div class="highlight highlight-source-go"><pre>money.<span class="pl-c1">Format</span>(<span class="pl-c1">10</span>)                                                     <span class="pl-c">// "$10.00"</span>
+money.<span class="pl-c1">Format</span>(<span class="pl-c1">10</span>, money.<span class="pl-smi">Options</span>{<span class="pl-s"><span class="pl-pds">"</span>currency<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>EUR<span class="pl-pds">"</span></span>})                   <span class="pl-c">// "€10.00"</span>
+money.<span class="pl-c1">Format</span>(<span class="pl-c1">10</span>, money.<span class="pl-smi">Options</span>{<span class="pl-s"><span class="pl-pds">"</span>with_cents<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>})                 <span class="pl-c">// "$10"</span>
+money.<span class="pl-c1">Format</span>(<span class="pl-c1">10</span>, money.<span class="pl-smi">Options</span>{<span class="pl-s"><span class="pl-pds">"</span>with_currency:<span class="pl-pds">"</span></span> <span class="pl-c1">true</span> })              <span class="pl-c">// "$10.00 USD"</span>
+money.<span class="pl-c1">Format</span>(<span class="pl-c1">10</span>, money.<span class="pl-smi">Options</span>{<span class="pl-s"><span class="pl-pds">"</span>with_symbol<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>})                <span class="pl-c">// "10.00"</span>
+money.<span class="pl-c1">Format</span>(<span class="pl-c1">10</span>, money.<span class="pl-smi">Options</span>{<span class="pl-s"><span class="pl-pds">"</span>with_symbol_space<span class="pl-pds">"</span></span>:<span class="pl-c1">true</span>})            <span class="pl-c">// "$ 10.00"</span>
+money.<span class="pl-c1">Format</span>(<span class="pl-c1">1000</span>)                                                   <span class="pl-c">// "$1,000.00"</span>
+money.<span class="pl-c1">Format</span>(<span class="pl-c1">1000</span>, money.<span class="pl-smi">Options</span>{<span class="pl-s"><span class="pl-pds">"</span>with_thousands_separator<span class="pl-pds">"</span></span>: <span class="pl-c1">false</span>}) <span class="pl-c">// "$1000.00"</span></pre></div>
 
 <p>For more detailed documentation refer to <a href="http://godoc.org/github.com/joiggama/money">godoc</a></p>
 
 <h2>
-<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
 
 <ol>
-<li>Fork it ( <a href="https://github.com/joiggama/money/fork">https://github.com/joiggama/money/fork</a> )</li>
+<li><a href="https://github.com/joiggama/money/fork">Fork it</a></li>
 <li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
 <li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
 <li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
@@ -78,7 +78,7 @@ money.<span class="pl-s3">New</span>(<span class="pl-c1">1000</span>, <span clas
 </ol>
 
 <h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
 
 <p><a href="LICENSE.md">The MIT licence</a></p>
       </section>
@@ -88,7 +88,7 @@ money.<span class="pl-s3">New</span>(<span class="pl-c1">1000</span>, <span clas
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">Money maintained by <a href="https://github.com/joiggama">joiggama</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
 

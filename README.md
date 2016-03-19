@@ -2,7 +2,6 @@
 
 [![travis](https://travis-ci.org/joiggama/money.svg)](https://travis-ci.org/joiggama/money)
 [![godoc](https://godoc.org/github.com/joiggama/money?status.svg)](https://godoc.org/github.com/joiggama/money)
-[![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/joiggama/money?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 A golang library to deal with money and currency representation.
 Inspired by [ruby money library](http://rubymoney.github.io/money).
@@ -36,7 +35,7 @@ For more detailed documentation refer to [godoc](http://godoc.org/github.com/joi
 
 ## Contributing
 
-1. Fork it ( https://github.com/joiggama/money/fork )
+1. [Fork it](https://github.com/joiggama/money/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

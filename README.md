@@ -21,14 +21,14 @@ import "github.com/joiggama/money"
 Examples:
 
 ```go
-money.New(10)                                                     // "$10.00"
-money.New(10, money.Options{"currency": "EUR"})                   // "€10.00"
-money.New(10, money.Options{"with_cents": false})                 // "$10"
-money.New(10, money.Options{"with_currency:" true })              // "$10.00 USD"
-money.New(10, money.Options{"with_symbol": false})                // "10.00"
-money.New(10, money.Options{"with_symbol_space":true})            // "$ 10.00"
-money.New(1000)                                                   // "$1,000.00"
-money.New(1000, money.Options{"with_thousands_separator": false}) // "$1000.00"
+money.Format(10)                                                     // "$10.00"
+money.Format(10, money.Options{"currency": "EUR"})                   // "€10.00"
+money.Format(10, money.Options{"with_cents": false})                 // "$10"
+money.Format(10, money.Options{"with_currency:" true })              // "$10.00 USD"
+money.Format(10, money.Options{"with_symbol": false})                // "10.00"
+money.Format(10, money.Options{"with_symbol_space":true})            // "$ 10.00"
+money.Format(1000)                                                   // "$1,000.00"
+money.Format(1000, money.Options{"with_thousands_separator": false}) // "$1000.00"
 ```
 
 For more detailed documentation refer to [godoc](http://godoc.org/github.com/joiggama/money)

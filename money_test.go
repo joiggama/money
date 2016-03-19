@@ -4,8 +4,8 @@ import (
 	"testing"
 )
 
-func TestNewWithDefaults(t *testing.T) {
-	currency := New(10)
+func TestFormatWithDefaults(t *testing.T) {
+	currency := Format(10)
 	expected := "$10.00"
 
 	if currency != expected {
@@ -13,8 +13,8 @@ func TestNewWithDefaults(t *testing.T) {
 	}
 }
 
-func TestNewWithCurrency(t *testing.T) {
-	currency := New(10, Options{"with_currency": true})
+func TestFormatWithCurrency(t *testing.T) {
+	currency := Format(10, Options{"with_currency": true})
 	expected := "$10.00 USD"
 
 	if currency != expected {
@@ -22,8 +22,8 @@ func TestNewWithCurrency(t *testing.T) {
 	}
 }
 
-func TestNewWithCurrencyWhenCanadian(t *testing.T) {
-	currency := New(10, Options{"currency": "CAD", "with_currency": true})
+func TestFormatWithCurrencyWhenCanadian(t *testing.T) {
+	currency := Format(10, Options{"currency": "CAD", "with_currency": true})
 	expected := "$10.00 CAD"
 
 	if currency != expected {
@@ -31,8 +31,8 @@ func TestNewWithCurrencyWhenCanadian(t *testing.T) {
 	}
 }
 
-func TestNewWhenJapanese(t *testing.T) {
-	currency := New(10, Options{"currency": "JPY"})
+func TestFormatWhenJapanese(t *testing.T) {
+	currency := Format(10, Options{"currency": "JPY"})
 	expected := "¥10"
 
 	if currency != expected {
@@ -40,8 +40,8 @@ func TestNewWhenJapanese(t *testing.T) {
 	}
 }
 
-func TestNewWhenJapaneseOverThousand(t *testing.T) {
-	currency := New(1000, Options{"currency": "JPY"})
+func TestFormatWhenJapaneseOverThousand(t *testing.T) {
+	currency := Format(1000, Options{"currency": "JPY"})
 	expected := "¥1,000"
 
 	if currency != expected {
@@ -49,8 +49,8 @@ func TestNewWhenJapaneseOverThousand(t *testing.T) {
 	}
 }
 
-func TestNewWhenJapaneseOverTenThousand(t *testing.T) {
-	currency := New(10000, Options{"currency": "JPY"})
+func TestFormatWhenJapaneseOverTenThousand(t *testing.T) {
+	currency := Format(10000, Options{"currency": "JPY"})
 	expected := "¥10,000"
 
 	if currency != expected {
@@ -58,8 +58,8 @@ func TestNewWhenJapaneseOverTenThousand(t *testing.T) {
 	}
 }
 
-func TestNewWhenJapaneseOverHundredThousand(t *testing.T) {
-	currency := New(100000, Options{"currency": "JPY"})
+func TestFormatWhenJapaneseOverHundredThousand(t *testing.T) {
+	currency := Format(100000, Options{"currency": "JPY"})
 	expected := "¥100,000"
 
 	if currency != expected {
@@ -67,8 +67,8 @@ func TestNewWhenJapaneseOverHundredThousand(t *testing.T) {
 	}
 }
 
-func TestNewWhenJapaneseOverMillion(t *testing.T) {
-	currency := New(1000000, Options{"currency": "JPY"})
+func TestFormatWhenJapaneseOverMillion(t *testing.T) {
+	currency := Format(1000000, Options{"currency": "JPY"})
 	expected := "¥1,000,000"
 
 	if currency != expected {
@@ -76,8 +76,8 @@ func TestNewWhenJapaneseOverMillion(t *testing.T) {
 	}
 }
 
-func TestNewWithoutCents(t *testing.T) {
-	currency := New(10, Options{"with_cents": false})
+func TestFormatWithoutCents(t *testing.T) {
+	currency := Format(10, Options{"with_cents": false})
 	expected := "$10"
 
 	if currency != expected {

@@ -15,14 +15,14 @@ Defaults
 
 Usage
 
-    New(10)                                               // "$10.00"
-    New(10, Options{"currency": "EUR"})                   // "€10.00"
-    New(10, Options{"with_cents": false})                 // "$10"
-    New(10, Options{"with_currency:" true })              // "$10.00 USD"
-    New(10, Options{"with_symbol": false})                // "10.00"
-    New(10, Options{"with_symbol_space":true})            // "$ 10.00"
-    New(1000)                                             // "$1,000.00"
-    New(1000, Options{"with_thousands_separator": false}) // "$1000.00"
+    Format(10)                                               // "$10.00"
+    Format(10, Options{"currency": "EUR"})                   // "€10.00"
+    Format(10, Options{"with_cents": false})                 // "$10"
+    Format(10, Options{"with_currency:" true })              // "$10.00 USD"
+    Format(10, Options{"with_symbol": false})                // "10.00"
+    Format(10, Options{"with_symbol_space":true})            // "$ 10.00"
+    Format(1000)                                             // "$1,000.00"
+    Format(1000, Options{"with_thousands_separator": false}) // "$1000.00"
 */
 package money
 
@@ -32,8 +32,8 @@ import (
 	"strings"
 )
 
-// New returns a formatted price string according to currency rules and options
-func New(val float64, opts ...Options) (result string) {
+// Format returns a formatted price string according to currency rules and options
+func Format(val float64, opts ...Options) (result string) {
 	options := defaults()
 
 	if len(opts) > 0 {

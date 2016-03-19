@@ -10,7 +10,7 @@ type currency struct {
 	DecimalMark        string
 	SubUnit            string
 	SubUnitToUnit      int64
-	HtmlEntity         string
+	HTMLEntity         string
 }
 
 var currencies = map[string]currency{

@@ -4,6 +4,34 @@ import (
 	"testing"
 )
 
+func TestFormatWithFloatValue(t *testing.T) {
+	actual := Format(10.00)
+	expected := "$10.00"
+
+	if actual != expected {
+		t.Errorf("Expected %s but got %s", expected, actual)
+	}
+}
+
+func TestFormatWithNegativeValue(t *testing.T) {
+	actual := Format(-10)
+	expected := "-$10.00"
+
+	if actual != expected {
+		t.Errorf("Expected %s but got %s", expected, actual)
+	}
+}
+
+func TestWithFloatNegativeValue(t *testing.T) {
+	actual := Format(-10.00)
+	expected := "-$10.00"
+
+	if actual != expected {
+		t.Errorf("Expected %s but got %s", expected, actual)
+	}
+
+}
+
 func TestFormatWithDefaults(t *testing.T) {
 	currency := Format(10)
 	expected := "$10.00"

@@ -23,6 +23,9 @@ Usage
     Format(10, Options{"with_symbol_space":true})            // "$ 10.00"
     Format(1000)                                             // "$1,000.00"
     Format(1000, Options{"with_thousands_separator": false}) // "$1000.00"
+    Format(10.00)                                            // "$10.00"
+    Format(-10)                                              // "-$10.00"
+    Format(-10.00)                                           // "-$10.00"
 */
 package money
 
@@ -42,7 +45,7 @@ func Format(val float64, opts ...Options) (result string) {
 
 	c := currencies[options["currency"].(string)]
 
-	integer, fractional := splitValue(val)
+	sign, integer, fractional := splitValue(val)
 
 	if options["with_thousands_separator"].(bool) {
 		result = separateThousands(integer, c.ThousandsSeparator)
@@ -62,7 +65,7 @@ func Format(val float64, opts ...Options) (result string) {
 		result = fmt.Sprintf("%s %s", result, options["currency"].(string))
 	}
 
-	return result
+	return fmt.Sprintf("%s%s", sign, result)
 }
 
 func addSymbol(result string, c currency, options Options) string {
@@ -108,11 +111,15 @@ func separateThousands(value, separator string) string {
 	return strings.Join(result, separator)
 }
 
-func splitValue(val float64) (integer, fractional string) {
+func splitValue(val float64) (sign string, integer, fractional string) {
 	i, f := math.Modf(val)
 
-	integer = fmt.Sprintf("%.0f", i)
-	fractional = fmt.Sprintf("%.2f", f)[2:]
+	if math.Signbit(i) {
+		sign = "-"
+	}
+
+	integer = fmt.Sprintf("%.0f", math.Abs(i))
+	fractional = fmt.Sprintf("%.2f", math.Abs(f))[2:]
 
 	return
 }
